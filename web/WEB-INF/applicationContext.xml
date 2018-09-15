@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <bean id="dky" class="test1.impl.Chinese" destroy-method="close">
         <property name="axe" ref="axe2"></property>
         <!--<constructor-arg ref="axe2"></constructor-arg>-->
     </bean>
     <bean id ="axe" class="test1.impl.StoneAxe"></bean>
     <bean id="axe2" class="test1.impl.SteelAxe"></bean>
+    <bean id="logInterceptor" class="test1.aop.LogInterceptor"></bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>  <!-- 要添加本行 -->
 
 </beans>

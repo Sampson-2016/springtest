@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import test1.aop.LogInterceptor;
 import test1.impl.Chinese;
 
 import java.lang.reflect.Field;
@@ -25,14 +26,18 @@ public class Main {
         //Resource isr = new ClassPathResource("/WEB-INF/applicationContext.xml");
         //DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         //new XmlBeanDefinitionReader(factory).loadBeanDefinitions(isr);
-        Chinese p = (Chinese)applicationContext.getBean("dky");
-        p.printName();
-
-        p.useAxe();
-        System.out.println("0001");
+        //Chinese p = (Chinese)applicationContext.getBean("dky");
+        //p.printName();
+        LogInterceptor logInterceptor = (LogInterceptor)applicationContext.getBean("logInterceptor");
+        logInterceptor.test();
+        System.out.println("00012");
         //Resource resource =applicationContext.getResource("classpath:web.xml");
         //System.out.println(resource);
         //System.out.println(resource.getInputStream());
+        Chinese p = (Chinese)applicationContext.getBean("dky");
+        p.printName();
+        p.useAxe();
+        System.out.println(p.testAround(" 无前缀后缀 "));
         ((ClassPathXmlApplicationContext)applicationContext).registerShutdownHook();
     }
 }

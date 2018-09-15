@@ -55,5 +55,12 @@ public class Chinese implements BeanNameAware, Person, DisposableBean {
         System.out.println("destroy 222222222");
     }
 
+
+    public String testAround(String s){
+        System.out.println("testAround"+s);
+        return s;
+    }
+
+
 }
 
