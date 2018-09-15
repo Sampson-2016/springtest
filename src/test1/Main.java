@@ -29,7 +29,7 @@ public class Main {
         p.printName();
 
         p.useAxe();
-        System.out.println();
+        System.out.println("000");
         //Resource resource =applicationContext.getResource("classpath:web.xml");
         //System.out.println(resource);
         //System.out.println(resource.getInputStream());
